@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'showproducts.html'  %}
+<h1>update product</h1>
+
+    <table align="center" border="1px" style="color: blueviolet">
+
+        <tr>
+            <th>PRODUCTNAME</th>
+            <th>PRICE</th>
+            <th>CATEGORY</th>
+            <th>COMPANY</th>
+        </tr>
+        {% comment %} {% for i in data %} {% endcomment %}
+            <tr>
+              
+                <form action="updatelang" method="POST">
+                    {%csrf_token%}
+                    <td>
+                        <input type="hidden" name="id" value="{{i.id}}"/>
+                        <input type="text" name="productname" value="{{i.productname}}"/>
+
+                    </td>
+                    <td><input type="number" name="price" value="{{i.price}}" /></td>
+                    <td><input type="text" name="category" value="{{i.category}}" /></td>
+                    <td><input type="text" name="company" value="{{i.company}}" /></td>
+                    <td><input type="submit" value="Update" /></td>
+                    <td><a href="deldata?productname={{i.productname}}">delete</a></td>
+
+                </form>
+               
+                
+            </tr>
+        {% comment %} {% endfor %} {% endcomment %}
+    </table>
+   
+    
+</body>
+</html>
